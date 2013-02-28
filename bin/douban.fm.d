@@ -1,23 +1,28 @@
 #!/usr/bin/env ruby
 require 'gli'
+require 'douban.fm'
 require 'douban.fm.d'
 
 include GLI::App
 
-program_desc 'Describe your application here'
+program_desc 'download your favorites songs in douban.fm'
 
-version DoubanFM::VERSION
+version DoubanFMD::VERSION
 
-desc 'Describe some switch here'
-switch [:s,:switch]
+desc 'Show verbose information'
+switch [:v,:verbose]
 
-desc 'Describe some flag here'
-default_value 'the default'
-arg_name 'The name of the argument'
-flag [:f,:flagname]
+desc 'douban.fm account name, normally an email address'
+default_value ENV['douban_user']||'ENV["douban_user"]'
+arg_name 'user'
+flag [:u,:user]
 
-desc 'Describe list here'
-arg_name 'Describe arguments to list here'
+desc 'douban.fm password'
+default_value ENV['douban_password']||'ENV["douban_password"]'
+arg_name 'password'
+flag [:p,:password]
+
+desc 'List your favorites songs from douban.fm'
 command :list do |c|
   c.desc 'Describe a switch to list'
   c.switch :s
@@ -28,7 +33,7 @@ command :list do |c|
   c.action do |global_options,options,args|
 
     # Your command logic here
-     
+
     # If you have any errors, just raise them
     # raise "that command made no sense"
 
@@ -37,7 +42,6 @@ command :list do |c|
 end
 
 desc 'Describe download here'
-arg_name 'Describe arguments to download here'
 command :download do |c|
   c.action do |global_options,options,args|
     puts "download command ran"

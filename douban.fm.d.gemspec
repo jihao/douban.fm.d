@@ -5,7 +5,7 @@ require 'douban.fm.d/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "douban.fm.d"
-  gem.version       = DoubanFM::VERSION
+  gem.version       = DoubanFMD::VERSION
   gem.authors       = ["jihao"]
   gem.email         = ["jacky.jihao@gmail.com"]
   gem.description   = %q{douban.fm favorites downloader}
@@ -22,4 +22,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency('aruba')
   gem.add_development_dependency('cucumber')
   gem.add_runtime_dependency('gli','2.5.4')
+  gem.add_runtime_dependency('douban.fm','0.4.0')
 end
