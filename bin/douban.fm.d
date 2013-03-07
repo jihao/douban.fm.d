@@ -24,20 +24,25 @@ flag [:p,:password]
 
 desc 'List your favorites songs from douban.fm'
 command :list do |c|
-  c.desc 'Describe a switch to list'
-  c.switch :s
-
-  c.desc 'Describe a flag to list'
-  c.default_value 'default'
-  c.flag :f
   c.action do |global_options,options,args|
 
-    # Your command logic here
+    if global_options[:verbose]
+      logger = DoubanFM::ConsoleLogger.new
+    else
+      logger = DoubanFM::DummyLogger.new
+    end
+
+    @douban_fm = DoubanFM::DoubanFM.new(logger, global_options[:user], global_options[:password])
+    @douban_fm.login
+    @douban_fm.fetch_liked_songs(100)
+    @douban_fm.liked_songs['songs'].each_with_index do |song, index|
+      puts "#{index}#{' '*(4 - index.to_s.length)}#{song['title']} - #{song['artist']}"
+    end
 
     # If you have any errors, just raise them
     # raise "that command made no sense"
 
-    puts "list command ran"
+
   end
 end
 
