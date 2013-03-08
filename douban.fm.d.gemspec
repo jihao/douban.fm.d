@@ -23,4 +23,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency('cucumber')
   gem.add_runtime_dependency('gli','2.5.4')
   gem.add_runtime_dependency('douban.fm','0.4.0')
+  gem.add_runtime_dependency('mechanize','2.5.1')
 end
