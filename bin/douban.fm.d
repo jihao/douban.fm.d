@@ -46,10 +46,32 @@ command :list do |c|
   end
 end
 
-desc 'Describe download here'
+desc 'Download all your favorites from douban.fm, or specify a song to download'
 command :download do |c|
+  c.desc "download a single song"
+  c.switch [:s,:singleMode]
+
+  c.desc  'title of the song'
+  c.arg_name 'title'
+  c.flag [:t,:title]
+
+  c.desc 'artist of the song'
+  c.arg_name 'artist'
+  c.flag [:a,:artist]
+
   c.action do |global_options,options,args|
-    puts "download command ran"
+    if global_options[:verbose]
+      logger = DoubanFM::ConsoleLogger.new
+    else
+      logger = DoubanFM::DummyLogger.new
+    end
+
+    if options[:singleMode]
+      help_now!("title is required") if options[:title].nil?
+      @douban_fmd = DoubanFMD::DoubanFMD.new(logger) #TODO: support specify download distr path
+      result = @douban_fmd.download(options[:title],options[:artist])
+      puts "You have it now: #{result}"
+    end
   end
 end
 

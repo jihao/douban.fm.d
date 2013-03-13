@@ -1,6 +1,6 @@
 # Douban.fm.d
 
-TODO: Write a gem description
+douban.fm favorites downloader
 
 ## Installation
 
@@ -18,7 +18,33 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+<pre>
+douban.fm.d -h
+
+NAME
+    douban.fm.d - download your favorites songs in douban.fm
+
+SYNOPSIS
+    douban.fm.d [global options] command [command options] [arguments...]
+
+VERSION
+    0.1.0
+
+GLOBAL OPTIONS
+    --help                  - Show this message
+    -p, --password=password - douban.fm password (default:ENV["douban_password"])
+    -u, --user=user         - douban.fm account name, normally an email address (default: ENV["douban_user"])
+    -v, --[no-]verbose      - Show verbose information
+    --version               -
+
+COMMANDS
+    download - Download all your favorites from douban.fm, or specify a song to
+               download
+    help     - Shows a list of commands or help for one command
+    list     - List your favorites songs from douban.fm
+
+</pre>
+
 
 ## Contributing
 
