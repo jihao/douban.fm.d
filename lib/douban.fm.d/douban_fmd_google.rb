@@ -3,7 +3,7 @@ module DoubanFMD
   require 'mechanize'
   require 'douban.fm'
 
-  class DoubanFMD
+  class DoubanFMDGoogle
 
     def initialize(logger = DoubanFM::DummyLogger.new, distr = './mp3')
       @logger = logger
