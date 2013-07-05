@@ -68,7 +68,7 @@ command :download do |c|
 
     if options[:singleMode]
       help_now!("title is required") if options[:title].nil?
-      @douban_fmd = DoubanFMD::DoubanFMDGoogle.new(logger) #TODO: support specify download distr path
+      @douban_fmd = DoubanFMD::DoubanFMDBaidu.new(logger) #TODO: support specify download distr path
       result = @douban_fmd.download(options[:title],options[:artist])
       puts "You have it now: #{result}"
     end

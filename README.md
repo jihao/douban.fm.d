@@ -28,7 +28,10 @@ SYNOPSIS
     douban.fm.d [global options] command [command options] [arguments...]
 
 VERSION
-    0.1.0
+    0.2.0
+
+HISTORY
+    ~0.1->0.2 download from baidu due to top100.cn down
 
 GLOBAL OPTIONS
     --help                  - Show this message
